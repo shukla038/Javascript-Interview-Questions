@@ -83,25 +83,17 @@ Array.prototype.flatPolyfill = (depth = 1) => {
 }
 
 //7.  shuffle array
-function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
-  
-    // While there remain elements to shuffle...
-    while (0 !== currentIndex) {
-  
-      // Pick a remaining element...
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
-  
-      // And swap it with the current element.
-      temporaryValue = array[currentIndex];
-      array[currentIndex] = array[randomIndex];
-      array[randomIndex] = temporaryValue;
-    }
-  
-    return array;
-  }
-  
+  function shuffle(arr){
+        var currentIndex = arr.length, temporaryValue, randomIndex;
+        while(currentIndex != 0){
+            randomIndex = Math.floor(Math.random(currentIndex));
+            currentIndex -= currentIndex;
+            temporaryValue = arr[currentIndex];
+            arr[currentIndex] = arr[randomIndex];
+            arr[randomIndex] = temporaryValue;
+        }
+        return arr;
+  }  
   // Used like so
   var arr = [2, 11, 37, 42];
   shuffle(arr);
