@@ -99,7 +99,7 @@ Array.prototype.flatPolyfill = (depth = 1) => {
   shuffle(arr);
   console.log(arr);
 
-// 8. debounce polyfill
+// 8. debounce Function
 let counter = 0;
 const getData = () => {
   // calls an API and gets Data
@@ -117,7 +117,7 @@ const getData = () => {
 }
 const betterFunction = debounce(getData, 300);
 
-// 9. Throttle polyfill
+// 9. Throttle Function
 const loggerFunc = () => {
     console.count("Throttled Function");
   }
