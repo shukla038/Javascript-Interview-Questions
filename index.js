@@ -99,5 +99,43 @@ Array.prototype.flatPolyfill = (depth = 1) => {
   shuffle(arr);
   console.log(arr);
 
+// 8. debounce polyfill
+let counter = 0;
+const getData = () => {
+  // calls an API and gets Data
+  console.log("Fetching Data ..", counter++);
+}
+  const debounce = function(func, delay=0){
+    let timer;
+    return () => {
+        clearTimeout(timer);
+        timer = setTimeout(()=>
+        {
+            func.apply(this, arguments);
+        }, delay)
+    }
+}
+const betterFunction = debounce(getData, 300);
+
+// 9. Throttle polyfill
+const loggerFunc = () => {
+    console.count("Throttled Function");
+  }
+const Throttle = function(func, delay=0){
+    let flag = true;
+    return () => {
+        if(flag){
+            func.apply(this, arguments);
+            flag = false;
+            setTimeout(() => {
+                flag = true;
+            }, delay)
+        }
+    }    
+}
+const betterLoggerFunction = throttle(loggerFunc, 1000);
+
+window.addEventListener("resize",betterLoggerFunction);
+
 
 
