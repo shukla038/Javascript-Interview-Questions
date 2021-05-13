@@ -137,5 +137,28 @@ const betterLoggerFunction = throttle(loggerFunc, 1000);
 
 window.addEventListener("resize",betterLoggerFunction);
 
+//10 . 4 ways to create object in javascript
+//  source: https://dzone.com/articles/easy-javascript-part-13-four-ways-to-create-object
 
+// 11. Currying
+    // Ex- 1 infinite arguments
+    var sum = (a) => (b) => b? sum(a+b) : a;
+    sum(1)(2)();
+    // limited arguments
+    var multiply = (a,b,c) => {
+        return (a*b*c);
+    }
+    var curry = (func) => {
+        return function curried(...args) {
+            if(args.length >= func.length){
+                return funca.apply(this,...args);
+            } else{
+                return function(...args2){
+                    return curried.apply(this, args.concat(args2));
+                }
+            }
+        }
+    }
+    var curried = curry(multiply)
+    curried(1)(2,3)
 
