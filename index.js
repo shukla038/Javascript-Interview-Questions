@@ -161,6 +161,7 @@ window.addEventListener("resize",betterLoggerFunction);
     }
     var curried = curry(multiply)
     curried(1)(2,3)
+
 // 12. configurable sort function
 
 const sortFunc = (keyProperty, sortOrder) => {
@@ -194,4 +195,31 @@ var prods = [
 	name: 'belt'}]
 
 console.log(prods.sort(sortFunc('name', 'desc')));
+
+// 13. Implement promise.all
+
+function all(promises){
+    return new Promise((resolve, reject) => {
+        const result = [];
+        if(promises.length === 0){
+            resolve(result);
+            return;
+        }
+        let countFulFilled = 0;
+        let isErrored = false
+        promises.forEach((item, index) => {
+               Promise.resolve(item).then((value) => {
+               if(isErrored) return;    
+               result[index] = value;
+               countFulFilled++;
+               if(countFulFilled === promises.length){
+                   resolve(result);
+                   return;
+               }
+           } ,(error) => {
+            reject(error)   
+           });
+        });
+    });
+}
 
