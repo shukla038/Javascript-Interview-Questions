@@ -161,4 +161,37 @@ window.addEventListener("resize",betterLoggerFunction);
     }
     var curried = curry(multiply)
     curried(1)(2,3)
+// 12. configurable sort function
+
+const sortFunc = (keyProperty, sortOrder) => {
+    let srtingOrder = sortOrder === "asc" ? 1 : -1;
+    return (item1, item2) => {
+        if(item1[keyProperty] > item2[keyProperty]){
+            return srtingOrder
+        } else if(item1[keyProperty] < item2[keyProperty]){
+            return -1 * srtingOrder;
+        } else {
+            return 0;
+        }
+    }
+} 
+
+var prods = [
+{	price : 100,
+	name: 'shoe'
+},
+{	price : 100,
+	name: 'shoe'
+},
+{
+	price : 40,
+	name: 'shirt'},
+{
+	price : 130,
+	name: 'tie'},
+{ 
+	price : 110,
+	name: 'belt'}]
+
+console.log(prods.sort(sortFunc('name', 'desc')));
 
