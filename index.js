@@ -248,3 +248,6 @@ const addMemo = mamoize(addition)
 console.log(addMemo(10,20)); // 30
 console.log(addMemo(10,20)); // 30 from cache
 
+// 14. How var and hoisting and other JS features works
+// https://www.youtube.com/watch?v=7_pzUSKI42E&t=4620s
+
