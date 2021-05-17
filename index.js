@@ -223,3 +223,28 @@ function all(promises){
     });
 }
 
+// 13. Implement memoization function
+
+const addition = (a,b) => {
+    return a+b;
+}
+const keyFromArgs = (funcName, args) => {
+    let propKey = [];
+    propKey = propKey.concat(funcName.name,args);
+    return propKey.join('|'); // (addition|10|20)
+}
+const mamoize = (funcToAdd) => {
+    const memCache = {};
+    return (...args) => {
+        const key = keyFromArgs(funcToAdd, args);
+        if (!memCache[key]) {
+            memCache[key] = funcToAdd(...args);
+            
+        }
+        return memCache[key];
+    }
+}
+const addMemo = mamoize(addition)
+console.log(addMemo(10,20)); // 30
+console.log(addMemo(10,20)); // 30 from cache
+
