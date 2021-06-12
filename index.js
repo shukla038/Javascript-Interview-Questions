@@ -251,3 +251,26 @@ console.log(addMemo(10,20)); // 30 from cache
 // 14. How var and hoisting and other JS features works
 // https://www.youtube.com/watch?v=7_pzUSKI42E&t=4620s
 
+// 15. Flat object
+
+const flattenObject = function(ob) {
+	let result = {};
+    for(let i in ob){
+        if(!ob.hasOwnProperty(i)) continue;
+        if(typeof ob[i] === 'object'){
+            let flatObj = flattenObject(ob[i]);
+            console.log(flatObj)
+            for(let x in flatObj){
+                if (!flatObj.hasOwnProperty(x)) continue;
+                result[i+'.'+x] = flatObj[x]
+            }
+        } else {
+            result[i] = ob[i];
+            console.log('result--',result[i])
+        }
+    }
+    return result;
+};
+
+console.log(flattenObject({ 'a':{ 'b':{ 'b2':2 }, 'c':{ 'c2':2, 'c3':3 } } }));
+
